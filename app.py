@@ -190,7 +190,6 @@ elif section == "Resource Hub":
     - [Beam AI](https://www.beam.ai/)
     """)
 
-# ---------- Talk To Me GPT ----------
 elif section == "Talk To Me GPT":
     st.title("💬 Talk To Me GPT")
     st.markdown("""
@@ -198,16 +197,20 @@ elif section == "Talk To Me GPT":
     """)
 
     user_input = st.text_area("Ask Addie anything:", height=150)
+
+    def run_openai_chat(user_input):
+        return openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are Addie, a helpful, fast-talking assistant for an AI-powered outreach strategist. You provide clever, smart, and encouraging ideas — especially for emails, social media, and activism."},
+                {"role": "user", "content": user_input}
+            ]
+        )
+
     if st.button("Send") and user_input:
         with st.spinner("Addie is thinking..."):
             try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-4",
-                    messages=[
-                        {"role": "system", "content": "You are Addie, a helpful, fast-talking assistant for an AI-powered outreach strategist. You provide clever, smart, and encouraging ideas — especially for emails, social media, and activism."},
-                        {"role": "user", "content": user_input}
-                    ]
-                )
+                response = run_openai_chat(user_input)
                 st.markdown("**Addie says:**")
                 st.write(response.choices[0].message.content.strip())
             except Exception as e:
