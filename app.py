@@ -146,7 +146,15 @@ elif section == "The MANUS Super Secret Password":
 # ---------- Resource Hub ----------
 elif section == "Resource Hub":
     st.title("📚 Resource Hub")
-    st.markdown("""... (resource hub markdown remains unchanged) ...""")
+    st.markdown("""
+    Here you can find links to webinars, tools, and resources that can help you get started on your journey.
+    
+    - **Webinar: AI for Email Campaigns**  
+      [Watch here](https://chefkelly.my.canva.site/webinar-ai-for-email-campaigns)
+      
+    - **Resource Hub**: [Link to helpful guides and resources]
+    """)
+
 
 # ---------- Talk To Me GPT ----------
 elif section == "Talk To Me GPT":
